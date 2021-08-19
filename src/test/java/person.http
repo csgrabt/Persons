@@ -1,0 +1,56 @@
+### Person hozzáadása
+POST http://localhost:8080/api/persons
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "yearOfBirth": 1950
+}
+
+### Person entitánsok lekérdezése listaként
+GET http://localhost:8080/api/persons
+Content-Type: application/json
+
+
+### Person entitánsok lekérdezése id alapján
+GET http://localhost:8080/api/persons/1
+Content-Type: application/json
+
+### Persont elérhetőségeinek a frissítése
+PUT http://localhost:8080/api/persons/1/contacts
+Content-Type: application/json
+
+{
+  "mobileNumber": "+36301234567",
+  "email": "johndoe@johndoe.com"
+}
+
+### Persont elérhetőségeinek a frissítése, azon belül is a címé
+PUT http://localhost:8080/api/persons/1/contacts/address
+Content-Type: application/json
+
+{
+  "zipCode": "5400",
+  "city": "Kamcsatka",
+  "street": "First",
+  "houseNumber": "12"
+}
+
+### tanulmányok hozzáadás
+POST http://localhost:8080/api/persons/1/educations
+Content-Type: application/json
+
+{
+  "major": "Java-SpringBoot",
+  "yearOfFinished": 2021
+}
+
+### munkahelyek hozzáadása
+POST http://localhost:8080/api/persons/1/workplace
+Content-Type: application/json
+
+{
+  "nameOfTheCompany" :"CUMT",
+  "startingYear": 2015,
+  "finishYear": 2017
+}
