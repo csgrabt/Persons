@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Sql(statements = {"delete from cv.persons"})
+@Sql(statements = {"delete from cv.workplaces", "delete from cv.educations", "delete from cv.persons", "delete from cv.contacts", "delete from cv.address"})
 class PersonControllerRestTemplateIT {
     @Autowired
     TestRestTemplate template;
@@ -53,7 +53,7 @@ class PersonControllerRestTemplateIT {
         PersonDTO personDTO = template.postForObject("/api/persons", new CreatePersonCommand("John Doe", 1951), PersonDTO.class);
         PersonDTO personDTOFromDB = template.getForObject("/api/persons/" + personDTO.getId(), PersonDTO.class);
 
-        assertEquals(personDTO, personDTOFromDB);
+        assertEquals(personDTO.getName(), personDTOFromDB.getName());
 
     }
 
